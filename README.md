@@ -6,9 +6,14 @@ commit](https://img.shields.io/github/last-commit/fernandoprudencio/CAworkshop)]
 
 Cluster Analysis workshop
 
+## Data (download it please)
+- [PISCOp_v2.1.1.nc](https://drive.google.com/file/d/1z80tBMkrLQuZ2YnO0j3NAVQRR_22bkD1/view?usp=sharing)
+- [basins.gpkg](https://drive.google.com/file/d/1TfZAFdQmjhyafwBIxnkJeB-0lG52JN8D/view?usp=sharing)
+
 ## Instructions
 Create the following folders within CAworkshop folder:
 - /data/raster (inside this, copy the PISCOp_v2.1.1.nc file).
+- /data/vector (inside this, copy the basins.gpkg file).
 - /info
 - /scripts
 - /exports
