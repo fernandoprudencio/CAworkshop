@@ -1,2 +1,2 @@
 # CAworkshop
-Cluster Analysis WOrkshop
+Cluster Analysis workshop
