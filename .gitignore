@@ -1,4 +1,10 @@
-\data
+data/*
+!data/rdata
+data/rdata/*
+!data/rdata/values_cluster3.RData
+!data/rdata/values_cluster2.RData
+!data/rdata/values_cluster1.RData
+
 \info
 \exports
 .Rproj.user
