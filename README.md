@@ -1,4 +1,4 @@
-CAworkshop
+Cluster Analysis of gridded rainfall data
 ================
 
 [![GitHub
