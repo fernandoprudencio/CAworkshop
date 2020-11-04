@@ -59,9 +59,9 @@ df.rgn.data <- tibble(
 ) %>%
   mutate(month = str_sub(date, 6, 7)) %>%
   group_by(month) %>%
-  mutate(decil = quantile(values, .9)) %>%
+  mutate(decil = quantile(values, .1)) %>%
   ungroup() %>%
-  mutate(hdf = ifelse(values >= decil, 1, 0)) %>%
+  mutate(hdf = ifelse(values <= decil, 1, 0)) %>%
   filter(
     str_sub(date, 6, 7) %nin% c("01", "02")
   )
