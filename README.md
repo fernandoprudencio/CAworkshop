@@ -7,10 +7,10 @@ commit](https://img.shields.io/github/last-commit/fernandoprudencio/CAworkshop)]
 Cluster Analysis workshop
 
 ## Data (download it please)
-- Monthly Pisco ([PISCOpm.nc])(https://drive.google.com/file/d/1luUR_MPzS7hFrWOrw0hQRGS73HFRZXVy/view?usp=sharing)
-- Daily Pisco ([PISCOpd.nc])(https://drive.google.com/file/d/1N9HNC0K_4FmI4KhGqEWemz8bgSsFdQSg/view?usp=sharing)
-- Digital Elevation Model ([SRTM_10km.nc])(https://drive.google.com/file/d/1ylnZXsaVGN13iayJ_LKX8WvMULzLpRMZ/view?usp=sharing)
-- Vector data ([basins.gpkg])(https://drive.google.com/file/d/1dLHGQ0bVaYx7LaIQu346YIg2FLsB7YYO/view?usp=sharing)
+- Monthly Pisco [(PISCOpm.nc)](https://drive.google.com/file/d/1luUR_MPzS7hFrWOrw0hQRGS73HFRZXVy/view?usp=sharing)
+- Daily Pisco [(PISCOpd.nc)](https://drive.google.com/file/d/1N9HNC0K_4FmI4KhGqEWemz8bgSsFdQSg/view?usp=sharing)
+- Digital Elevation Model [(SRTM_10km.nc)](https://drive.google.com/file/d/1ylnZXsaVGN13iayJ_LKX8WvMULzLpRMZ/view?usp=sharing)
+- Vector data [(basins.gpkg)](https://drive.google.com/file/d/1dLHGQ0bVaYx7LaIQu346YIg2FLsB7YYO/view?usp=sharing)
 
 ## Instructions
 Create the following folders within CAworkshop folder:
