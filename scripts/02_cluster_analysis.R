@@ -46,7 +46,8 @@ grd.stck <- raster::stack(grd.pp, grd.dem) %>%
 df <- coordinates(grd.stck) %>%
   cbind(getValues(grd.stck)) %>%
   as_tibble() %>%
-  drop_na()
+  drop_na() %>%
+  as.data.frame()
 
 names(df) <- c("lon", "lat", month.abb, "elev")
 
@@ -65,13 +66,14 @@ fviz_nbclust(k.nbclust)
 
 ###'   3| Calculating distance matrix
 ##'      3.1| choose between euclidean, gower or manhattan metric
-dist.df <- daisy(stzn.df, metric = "euclidean")
+dist.df <- dist(stzn.df, method = "euclidean")
+# dist.df <- daisy(stzn.df, metric = "euclidean")
 
 ###'   4| Cluster analysis by Partitioning Around Medoids
 ##'       if you insert distance matrix (dist.df), it's necessary that you add
 ##'       "diss = T" argument into pam() function
 set.seed(2020)
-clus.df <- pam(dist.df, 3, diss = T, metric = "euclidean")
+clus.df <- pam(stzn.df, 2, diss = F, metric = "euclidean")
 
 ###'   5| Plot average silhouette value and build table with number of
 ##'       negative values by cluster
@@ -103,7 +105,8 @@ sltee.nv <- clus.df$silinfo[[1]] %>%
 #' Plot clusters from the first two components of PCA
 #'   1| building cluster plot
 clus.plt <- factoextra::fviz_cluster(
-  clus.df,
+  object = clus.df,
+  data = NULL,
   ggtheme = theme_bw(),
   ellipse.type = "t",
   geom = "point",
@@ -122,7 +125,7 @@ xy.coord <- coordinates(grd.stck) %>%
 
 grid.df <- xy.coord %>%
   left_join(
-    cbind(
+    mutate(
       df %>% dplyr::select(lon, lat),
       clus = clus.df$clustering
     ),

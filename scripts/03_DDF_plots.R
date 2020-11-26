@@ -31,26 +31,26 @@ load("data/rdata/values_cluster3.RData")
 ####' Load constants
 k.dry.yr <- c(2005, 2010, 2016) # dry years
 k.date.prd <- seq(as.Date("1981-01-01"), as.Date("2016-12-31"), by = "1 day")
-
+  
 ####' Read vector data
 sf.basin <- st_read(dsn = "data/vector/clusters.gpkg", layer = "clusters") %>%
-  dplyr::filter(id == 3)
+  dplyr::filter(id == 1)
 
 ####' Read raster data
-# grd.data <- brick("data/raster/PISCOpd.nc")
-# 
-# for (i in 1:nlayers(grd.data)) {
-#   print(i)
-#   vls.day <- lapply(
-#     raster::extract(grd.data[[i]], sf.basin),
-#     function(x) if (!is.null(x)) mean(x, na.rm = TRUE) else NA
-#   ) %>%
-#     unlist()
-# 
-#   if (i == 1) vls.mn <- vls.day else vls.mn <- c(vls.mn, vls.day)
-# }
-# 
-# save(vls.mn, file = "data/rdata/values_cluster3.RData")
+grd.data <- brick("data/raster/PISCOpd.nc")
+
+for (i in 1:nlayers(grd.data)) {
+  print(i)
+  vls.day <- lapply(
+    raster::extract(grd.data[[i]], sf.basin),
+    function(x) if (!is.null(x)) mean(x, na.rm = TRUE) else NA
+  ) %>%
+    unlist()
+
+  if (i == 1) vls.mn <- vls.day else vls.mn <- c(vls.mn, vls.day)
+}
+
+save(vls.mn, file = "data/rdata/values_cluster1.RData")
 
 ####' BUILD A DATAFRAME OF TEMPERATURE DATE
 df.rgn.data <- tibble(
@@ -178,6 +178,6 @@ plt.hdf <- ggplot(df.hdf, aes(date, value, group = type)) +
   )
 
 ggsave(
-  plot = plt.hdf, "exports/ddf_cluster3.png",
+  plot = plt.hdf, "exports/ddf_cluster1.png",
   width = 10, height = 12, units = "cm", dpi = 1000
 )
