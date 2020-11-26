@@ -26,7 +26,7 @@ library(extrafont)
 library(grid)
 
 ####' Load Rdata
-load("data/rdata/values_cluster3.RData")
+load("data/rdata/values_cluster1.RData")
 
 ####' Load constants
 k.dry.yr <- c(2005, 2010, 2016) # dry years
@@ -39,18 +39,18 @@ sf.basin <- st_read(dsn = "data/vector/clusters.gpkg", layer = "clusters") %>%
 ####' Read raster data
 grd.data <- brick("data/raster/PISCOpd.nc")
 
-for (i in 1:nlayers(grd.data)) {
-  print(i)
-  vls.day <- lapply(
-    raster::extract(grd.data[[i]], sf.basin),
-    function(x) if (!is.null(x)) mean(x, na.rm = TRUE) else NA
-  ) %>%
-    unlist()
-
-  if (i == 1) vls.mn <- vls.day else vls.mn <- c(vls.mn, vls.day)
-}
-
-save(vls.mn, file = "data/rdata/values_cluster1.RData")
+# for (i in 1:nlayers(grd.data)) {
+#   print(i)
+#   vls.day <- lapply(
+#     raster::extract(grd.data[[i]], sf.basin),
+#     function(x) if (!is.null(x)) mean(x, na.rm = TRUE) else NA
+#   ) %>%
+#     unlist()
+# 
+#   if (i == 1) vls.mn <- vls.day else vls.mn <- c(vls.mn, vls.day)
+# }
+# 
+# save(vls.mn, file = "data/rdata/values_cluster1.RData")
 
 ####' BUILD A DATAFRAME OF TEMPERATURE DATE
 df.rgn.data <- tibble(
@@ -121,7 +121,7 @@ lbls <- c(
 plt.hdf <- ggplot(df.hdf, aes(date, value, group = type)) +
   labs(
     title = "SEASONAL EVOLUTION OF\nDRY DAY FREQUENCY (DDF)",
-    y = "accumulated from hot days"
+    y = "accumulated from dry days"
   ) +
   geom_ribbon(
     aes(ymin = hdf.min, ymax = hdf.max),
